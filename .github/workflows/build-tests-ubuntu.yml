@@ -101,9 +101,9 @@ jobs:
             buildWithIl2cpp: true
 
     steps:
-      # - name: Clear Space for Android Build
-        # if: matrix.targetPlatform == 'Android'
-        # uses: jlumbroso/free-disk-space@v1.3.1
+      - name: Clear Space for Android Build
+        if: matrix.targetPlatform == 'Android'
+        uses: jlumbroso/free-disk-space@v1.3.1
 
       ###########################
       #         Checkout        #
