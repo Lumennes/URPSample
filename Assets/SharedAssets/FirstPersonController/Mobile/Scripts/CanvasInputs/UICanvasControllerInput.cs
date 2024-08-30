@@ -39,7 +39,12 @@ namespace StarterAssets
         {
             starterAssetsInputs.SprintInput(virtualSprintState);
         }
-        
+
+        public void VirtualSwitchQualityInput(bool virtualSwitchQuality)
+        {
+            starterAssetsInputs.SwitchQuality(virtualSwitchQuality);
+        }
+
     }
 
 }

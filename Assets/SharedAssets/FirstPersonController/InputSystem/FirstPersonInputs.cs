@@ -13,8 +13,9 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+        //public bool switchQuality;
 
-		[Header("Movement Settings")]
+        [Header("Movement Settings")]
 		public bool analogMovement;
 
 		[Header("Mouse Cursor Settings")]
@@ -107,10 +108,35 @@ namespace StarterAssets
 			}
 			SprintInput(value.isPressed);
 		}
+
+        public void OnSwitchQuality(InputValue value)
+        {
+            //if (CameraManager != null)
+            //{
+            //    CameraManager.NotifyPlayerMoved();
+            //}
+            SwitchQuality(value.isPressed);
+        }
 #endif
 
+        public void SwitchQuality(bool newSwitchQualityState)
+        {
+            //switchQuality = newSwitchQualityState;
 
-		public void MoveInput(Vector2 newMoveDirection)
+			if(newSwitchQualityState == true)
+			{
+				if(QualitySettings.count > 1)
+				{
+					var q = QualitySettings.GetQualityLevel() >= 
+						QualitySettings.count - 1 ? 0 : 
+						QualitySettings.GetQualityLevel() + 1;
+                    QualitySettings.SetQualityLevel(q);
+
+				}
+			}
+        }
+
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
