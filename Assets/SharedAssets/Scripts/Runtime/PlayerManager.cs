@@ -38,6 +38,11 @@ public class PlayerManager : MonoBehaviour
         
         m_InFlythrough = false;
 
+#if UNITY_EDITOR
+        Debug.Log("Application.isEditor: " + Application.isEditor);
+        Debug.Log("Application.isPlaying: " + Application.isPlaying);
+#endif
+
         if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             m_TouchInputCanvas.SetActive(true);
@@ -53,11 +58,11 @@ public class PlayerManager : MonoBehaviour
             m_TimeIdle = 0;
             EnableFlythrough();
         }
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         if(m_HasFocus) m_TimeIdle += Time.unscaledDeltaTime;
-        #else 
+#else
         m_TimeIdle += Time.unscaledDeltaTime;
-        #endif
+#endif
     }
 
     private void Awake()
